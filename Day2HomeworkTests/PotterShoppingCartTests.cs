@@ -49,6 +49,30 @@ namespace Day2HomeworkTests
             
         }
 
+        /// <summary>
+        /// 一二三集各買了一本，價格應為100*3*0.9=270
+        /// </summary>
+        [TestMethod]
+        public void 一二三集各買了一本_價格應為270()
+        {
+            var books = new List<PotterBook>
+            {
+                new PotterBook { Episode = 1, Price = 100 },
+                new PotterBook { Episode = 2, Price = 100 },
+                new PotterBook { Episode = 3, Price = 100 }
+            };
+
+            var shoppingCart = new PotterShoppingCart();
+
+            shoppingCart.Add(books);
+
+            var expected = 270;
+            var actual = shoppingCart.GetTotal();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+
         
     }
 }
