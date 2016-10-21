@@ -68,12 +68,17 @@ namespace Day2Homework
             
         }
 
+        /// <summary>
+        /// Gets the package discount total.
+        /// </summary>
+        /// <returns></returns>
         private IEnumerable<double> GetPackageDiscountTotal()
         {
-            var packageNum = 1;
-            var max = this.list.GroupBy(b => b.Episode)
-                .Select(b => b.Count())
-                .Max();
+            var groupCounts = this.list.GroupBy(b => b.Episode).Select(b => b.Count());
+
+            var prevNum = 0;
+            var packageNum = groupCounts.Min();
+            var max = groupCounts.Max();
 
             while (packageNum <= max)
             {
@@ -83,8 +88,9 @@ namespace Day2Homework
                 var total = package.Sum(b => b.First().Price);
 
                 var rate = GetDiscountRate(episodeCount);
-                yield return total * rate;
+                yield return total * rate * (packageNum - prevNum);
 
+                prevNum = packageNum;
                 packageNum++;
             }
 

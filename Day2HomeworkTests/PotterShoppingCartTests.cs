@@ -169,6 +169,41 @@ namespace Day2HomeworkTests
 
             Assert.AreEqual(expected, actual);
         }
-        
+
+        /// <summary>
+        /// 買了三套，價格應為100*5*0.75*3 = 1125
+        /// </summary>
+        [TestMethod]
+        public void 買了三套_價格應為1875()
+        {
+            var books = new List<PotterBook>
+            {
+                new PotterBook { Episode = 1, Price = 100 },
+                new PotterBook { Episode = 2, Price = 100 },
+                new PotterBook { Episode = 3, Price = 100 },
+                new PotterBook { Episode = 4, Price = 100 },
+                new PotterBook { Episode = 5, Price = 100 },
+                new PotterBook { Episode = 1, Price = 100 },
+                new PotterBook { Episode = 2, Price = 100 },
+                new PotterBook { Episode = 3, Price = 100 },
+                new PotterBook { Episode = 4, Price = 100 },
+                new PotterBook { Episode = 5, Price = 100 },
+                new PotterBook { Episode = 1, Price = 100 },
+                new PotterBook { Episode = 2, Price = 100 },
+                new PotterBook { Episode = 3, Price = 100 },
+                new PotterBook { Episode = 4, Price = 100 },
+                new PotterBook { Episode = 5, Price = 100 }
+            };
+
+            var shoppingCart = new PotterShoppingCart();
+
+            shoppingCart.Add(books);
+
+            var expected = 1125;
+            var actual = shoppingCart.GetTotal();
+
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }
