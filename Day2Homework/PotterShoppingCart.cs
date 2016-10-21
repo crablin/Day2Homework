@@ -1,21 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Day2Homework
 {
     public class PotterShoppingCart
     {
+        private List<PotterBook> list;
+
         public PotterShoppingCart()
         {
+            this.list = new List<PotterBook>();
         }
 
         public void Add(PotterBook book)
         {
-            throw new NotImplementedException();
+            this.list.Add(book);
         }
 
         public object GetTotal()
         {
-            throw new NotImplementedException();
+            return this.list.Sum(b => b.Price);
         }
     }
 }
