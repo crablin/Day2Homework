@@ -14,7 +14,7 @@ namespace Day2HomeworkTests
         [TestMethod]
         public void 第一集買了一本_價格應為100()
         {
-            var book = new PotterBook { Episode = 1, Price = 100 };
+            var book = new PotterBook { Episode = 1, Price = 100, Quantity = 1 };
             var shoppingCart = new PotterShoppingCart();
 
             shoppingCart.Add(book);
@@ -34,8 +34,8 @@ namespace Day2HomeworkTests
         {
             var books = new List<PotterBook>
             {
-                new PotterBook { Episode = 1, Price = 100 },
-                new PotterBook { Episode = 2, Price = 100 }
+                new PotterBook { Episode = 1, Price = 100, Quantity = 1 },
+                new PotterBook { Episode = 2, Price = 100, Quantity = 1 }
             };
 
             var shoppingCart = new PotterShoppingCart();
@@ -57,9 +57,9 @@ namespace Day2HomeworkTests
         {
             var books = new List<PotterBook>
             {
-                new PotterBook { Episode = 1, Price = 100 },
-                new PotterBook { Episode = 2, Price = 100 },
-                new PotterBook { Episode = 3, Price = 100 }
+                new PotterBook { Episode = 1, Price = 100, Quantity = 1 },
+                new PotterBook { Episode = 2, Price = 100, Quantity = 1 },
+                new PotterBook { Episode = 3, Price = 100, Quantity = 1 }
             };
 
             var shoppingCart = new PotterShoppingCart();
@@ -80,10 +80,10 @@ namespace Day2HomeworkTests
         {
             var books = new List<PotterBook>
             {
-                new PotterBook { Episode = 1, Price = 100 },
-                new PotterBook { Episode = 2, Price = 100 },
-                new PotterBook { Episode = 3, Price = 100 },
-                new PotterBook { Episode = 4, Price = 100 }
+                new PotterBook { Episode = 1, Price = 100, Quantity = 1},
+                new PotterBook { Episode = 2, Price = 100, Quantity = 1},
+                new PotterBook { Episode = 3, Price = 100, Quantity = 1},
+                new PotterBook { Episode = 4, Price = 100, Quantity = 1}
             };
 
             var shoppingCart = new PotterShoppingCart();
@@ -104,11 +104,11 @@ namespace Day2HomeworkTests
         {
             var books = new List<PotterBook>
             {
-                new PotterBook { Episode = 1, Price = 100 },
-                new PotterBook { Episode = 2, Price = 100 },
-                new PotterBook { Episode = 3, Price = 100 },
-                new PotterBook { Episode = 4, Price = 100 },
-                new PotterBook { Episode = 5, Price = 100 }
+                new PotterBook { Episode = 1, Price = 100, Quantity = 1},
+                new PotterBook { Episode = 2, Price = 100, Quantity = 1},
+                new PotterBook { Episode = 3, Price = 100, Quantity = 1},
+                new PotterBook { Episode = 4, Price = 100, Quantity = 1},
+                new PotterBook { Episode = 5, Price = 100, Quantity = 1}
             };
 
             var shoppingCart = new PotterShoppingCart();
@@ -129,10 +129,9 @@ namespace Day2HomeworkTests
         {
             var books = new List<PotterBook>
             {
-                new PotterBook { Episode = 1, Price = 100 },
-                new PotterBook { Episode = 2, Price = 100 },
-                new PotterBook { Episode = 3, Price = 100 },
-                new PotterBook { Episode = 3, Price = 100 }
+                new PotterBook { Episode = 1, Price = 100, Quantity = 1},
+                new PotterBook { Episode = 2, Price = 100, Quantity = 1},
+                new PotterBook { Episode = 3, Price = 100, Quantity = 2},
             };
 
             var shoppingCart = new PotterShoppingCart();
@@ -153,11 +152,9 @@ namespace Day2HomeworkTests
         {
             var books = new List<PotterBook>
             {
-                new PotterBook { Episode = 1, Price = 100 },
-                new PotterBook { Episode = 2, Price = 100 },
-                new PotterBook { Episode = 2, Price = 100 },
-                new PotterBook { Episode = 3, Price = 100 },
-                new PotterBook { Episode = 3, Price = 100 }
+                new PotterBook { Episode = 1, Price = 100, Quantity = 1 },
+                new PotterBook { Episode = 2, Price = 100, Quantity = 2 },
+                new PotterBook { Episode = 3, Price = 100, Quantity = 2 }
             };
 
             var shoppingCart = new PotterShoppingCart();
@@ -178,21 +175,11 @@ namespace Day2HomeworkTests
         {
             var books = new List<PotterBook>
             {
-                new PotterBook { Episode = 1, Price = 100 },
-                new PotterBook { Episode = 2, Price = 100 },
-                new PotterBook { Episode = 3, Price = 100 },
-                new PotterBook { Episode = 4, Price = 100 },
-                new PotterBook { Episode = 5, Price = 100 },
-                new PotterBook { Episode = 1, Price = 100 },
-                new PotterBook { Episode = 2, Price = 100 },
-                new PotterBook { Episode = 3, Price = 100 },
-                new PotterBook { Episode = 4, Price = 100 },
-                new PotterBook { Episode = 5, Price = 100 },
-                new PotterBook { Episode = 1, Price = 100 },
-                new PotterBook { Episode = 2, Price = 100 },
-                new PotterBook { Episode = 3, Price = 100 },
-                new PotterBook { Episode = 4, Price = 100 },
-                new PotterBook { Episode = 5, Price = 100 }
+                new PotterBook { Episode = 1, Price = 100, Quantity = 3 },
+                new PotterBook { Episode = 2, Price = 100, Quantity = 3 },
+                new PotterBook { Episode = 3, Price = 100, Quantity = 3 },
+                new PotterBook { Episode = 4, Price = 100, Quantity = 3 },
+                new PotterBook { Episode = 5, Price = 100, Quantity = 3 }
             };
 
             var shoppingCart = new PotterShoppingCart();
