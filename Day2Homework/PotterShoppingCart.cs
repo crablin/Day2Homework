@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace Day2Homework
 {
     public class PotterShoppingCart
@@ -40,18 +41,17 @@ namespace Day2Homework
         /// <returns></returns>
         public double GetTotal()
         {
-            var rate = GetDiscountRate();
-
-            return this.list.Sum(b => b.Price) * rate;
+            return GetPackageDiscountTotal().Sum();
         }
 
         /// <summary>
         /// Gets the discount rate.
         /// </summary>
+        /// <param name="episodeCount">episode count</param>
         /// <returns></returns>
-        private double GetDiscountRate()
+        private double GetDiscountRate(int episodeCount)
         {
-            switch (this.list.Count)
+            switch (episodeCount)
             {
                 case 2: 
                     return 0.95;
@@ -66,6 +66,28 @@ namespace Day2Homework
 
             }
             
+        }
+
+        private IEnumerable<double> GetPackageDiscountTotal()
+        {
+            var packageNum = 1;
+            var max = this.list.GroupBy(b => b.Episode)
+                .Select(b => b.Count())
+                .Max();
+
+            while (packageNum <= max)
+            {
+                var package = this.list.GroupBy(b => b.Episode).Where(b => b.Count() >= packageNum);
+
+                var episodeCount = package.Count();
+                var total = package.Sum(b => b.First().Price);
+
+                var rate = GetDiscountRate(episodeCount);
+                yield return total * rate;
+
+                packageNum++;
+            }
+
         }
 
     }
