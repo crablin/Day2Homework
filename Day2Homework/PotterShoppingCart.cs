@@ -51,10 +51,17 @@ namespace Day2Homework
         /// <returns></returns>
         private double GetDiscountRate()
         {
-            if (this.list.Count == 2)
-                return 0.95;
+            switch (this.list.Count)
+            {
+                case 2: 
+                    return 0.95;
+                case 3:
+                    return 0.9;
+                default:
+                    return 1;
 
-            return 1;
+            }
+            
         }
 
     }
