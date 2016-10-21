@@ -1,4 +1,5 @@
 ﻿using System;
+using Day2Homework;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Day2HomeworkTests
@@ -12,7 +13,16 @@ namespace Day2HomeworkTests
         [TestMethod]
         public void 第一集買了一本_價格應為100()
         {
-            Assert.Fail();
+            var book = new PotterBook { Episode = 1, Price = 100 };
+            var shoppingCart = new PotterShoppingCart();
+
+            shoppingCart.Add(book);
+
+            var expected = 100;
+            var actual = shoppingCart.GetTotal();
+
+            Assert.AreEqual(expected, actual);
+
         }
 
         
