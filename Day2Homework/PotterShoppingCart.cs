@@ -17,10 +17,15 @@ namespace Day2Homework
         {
             this.list.Add(book);
         }
-
+        
         public object GetTotal()
         {
             return this.list.Sum(b => b.Price);
+        }
+
+        public void Add(List<PotterBook> books)
+        {
+            throw new NotImplementedException();
         }
     }
 }
