@@ -18,10 +18,9 @@ namespace Day2HomeworkTests
             var shoppingCart = new PotterShoppingCart();
 
             shoppingCart.Add(book);
-
-            var expected = 100;
             var actual = shoppingCart.GetTotal();
-
+            
+            var expected = 100;
             Assert.AreEqual(expected, actual);
 
         }
@@ -41,10 +40,9 @@ namespace Day2HomeworkTests
             var shoppingCart = new PotterShoppingCart();
 
             shoppingCart.Add(books);
-
-            var expected = 190;
             var actual = shoppingCart.GetTotal();
-
+            
+            var expected = 190;
             Assert.AreEqual(expected, actual);
             
         }
@@ -65,10 +63,9 @@ namespace Day2HomeworkTests
             var shoppingCart = new PotterShoppingCart();
 
             shoppingCart.Add(books);
-
-            var expected = 270;
             var actual = shoppingCart.GetTotal();
-
+            
+            var expected = 270;
             Assert.AreEqual(expected, actual);
         }
 
@@ -89,10 +86,9 @@ namespace Day2HomeworkTests
             var shoppingCart = new PotterShoppingCart();
 
             shoppingCart.Add(books);
-
-            var expected = 320;
             var actual = shoppingCart.GetTotal();
-
+            
+            var expected = 320;
             Assert.AreEqual(expected, actual);
         }
 
@@ -114,10 +110,9 @@ namespace Day2HomeworkTests
             var shoppingCart = new PotterShoppingCart();
 
             shoppingCart.Add(books);
-
-            var expected = 375;
             var actual = shoppingCart.GetTotal();
-
+            
+            var expected = 375;
             Assert.AreEqual(expected, actual);
         }
 
@@ -137,10 +132,9 @@ namespace Day2HomeworkTests
             var shoppingCart = new PotterShoppingCart();
 
             shoppingCart.Add(books);
-
-            var expected = 370;
             var actual = shoppingCart.GetTotal();
-
+            
+            var expected = 370;
             Assert.AreEqual(expected, actual);
         }
 
@@ -160,10 +154,9 @@ namespace Day2HomeworkTests
             var shoppingCart = new PotterShoppingCart();
 
             shoppingCart.Add(books);
-
             var expected = 460;
+            
             var actual = shoppingCart.GetTotal();
-
             Assert.AreEqual(expected, actual);
         }
 
@@ -183,14 +176,25 @@ namespace Day2HomeworkTests
             };
 
             var shoppingCart = new PotterShoppingCart();
-
             shoppingCart.Add(books);
-
-            var expected = 1125;
             var actual = shoppingCart.GetTotal();
 
+            var expected = 1125;
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// 買了三套，價格應為100*5*0.75*3 = 1125
+        /// </summary>
+        [TestMethod]
+        public void 沒買東西_價格應為0()
+        {
+            var shoppingCart = new PotterShoppingCart();
+
+            var actual = shoppingCart.GetTotal();
+
+            var expected = 0;
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

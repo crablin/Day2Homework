@@ -41,6 +41,9 @@ namespace Day2Homework
         /// <returns></returns>
         public double GetTotal()
         {
+            if (this.list.Count == 0)
+                return 0;
+
             return GetPackageByQuantity()
                 .Sum(package => package.Sum(b => b.Price) * GetDiscountRate(package.Count()));
         }
@@ -68,9 +71,9 @@ namespace Day2Homework
             }
             
         }
-        
+
         /// <summary>
-        /// Gets the package.
+        /// Gets the package by quantity.
         /// </summary>
         /// <returns></returns>
         private IEnumerable<IEnumerable<PotterBook>> GetPackageByQuantity()
