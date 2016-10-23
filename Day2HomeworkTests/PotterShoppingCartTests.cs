@@ -171,7 +171,7 @@ namespace Day2HomeworkTests
         /// 買了三套，價格應為100*5*0.75*3 = 1125
         /// </summary>
         [TestMethod]
-        public void 買了三套_價格應為1875()
+        public void 買了三套_價格應為1125()
         {
             var books = new List<PotterBook>
             {

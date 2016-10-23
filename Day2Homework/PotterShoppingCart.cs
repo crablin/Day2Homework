@@ -41,7 +41,8 @@ namespace Day2Homework
         /// <returns></returns>
         public double GetTotal()
         {
-            return GetPackageDiscountTotal().Sum();
+            return GetPackageByQuantity()
+                .Sum(package => package.Sum(b => b.Price) * GetDiscountRate(package.Count()));
         }
 
         /// <summary>
@@ -67,32 +68,21 @@ namespace Day2Homework
             }
             
         }
-
+        
         /// <summary>
-        /// Gets the package discount total.
+        /// Gets the package.
         /// </summary>
         /// <returns></returns>
-        private IEnumerable<double> GetPackageDiscountTotal()
+        private IEnumerable<IEnumerable<PotterBook>> GetPackageByQuantity()
         {
-            var prevNum = 0;
-            var packageNum = this.list.Min(b => b.Quantity);
+            var packageIndex = 1;
             var max = this.list.Max(b => b.Quantity);
 
-            while (packageNum <= max)
+            while (packageIndex <= max)
             {
-                var package = this.list.Where(b => b.Quantity >= packageNum);
-
-                var episodeCount = package.Count();
-                var total = package.Sum(b => b.Price);
-
-                var rate = GetDiscountRate(episodeCount);
-                yield return total * rate * (packageNum - prevNum);
-
-                prevNum = packageNum;
-                packageNum++;
+                yield return this.list.Where(b => b.Quantity >= packageIndex);
+                packageIndex++;
             }
-
         }
-
     }
 }
