@@ -7,6 +7,7 @@ namespace Day2Homework
 {
     public class PotterShoppingCart
     {
+        private Dictionary<int, double> discountRates;
         private List<PotterBook> list;
 
         /// <summary>
@@ -15,6 +16,14 @@ namespace Day2Homework
         public PotterShoppingCart()
         {
             this.list = new List<PotterBook>();
+            this.discountRates = new Dictionary<int, double>()
+            {
+                { 1, 1 },
+                { 2, 0.95 },
+                { 3, 0.9 },
+                { 4, 0.8 },
+                { 5, 0.75 }
+            };
         }
 
         /// <summary>
@@ -44,47 +53,30 @@ namespace Day2Homework
             if (this.list.Count == 0)
                 return 0;
 
-            return GetPackageByQuantity()
-                .Sum(package => package.Sum(b => b.Price) * GetDiscountRate(package.Count()));
+            return GetPackageTotalDiscounts().Sum();
         }
-
-        /// <summary>
-        /// Gets the discount rate.
-        /// </summary>
-        /// <param name="episodeCount">episode count</param>
-        /// <returns></returns>
-        private double GetDiscountRate(int episodeCount)
-        {
-            switch (episodeCount)
-            {
-                case 2: 
-                    return 0.95;
-                case 3:
-                    return 0.9;
-                case 4:
-                    return 0.8;
-                case 5:
-                    return 0.75;
-                default:
-                    return 1;
-
-            }
-            
-        }
+        
 
         /// <summary>
         /// Gets the package by quantity.
         /// </summary>
         /// <returns></returns>
-        private IEnumerable<IEnumerable<PotterBook>> GetPackageByQuantity()
+        private IEnumerable<double> GetPackageTotalDiscounts()
         {
-            var packageIndex = 1;
-            var max = this.list.Max(b => b.Quantity);
+            var prevQuantity = 0;
+            var packageQuantities = this.list.Select(b => b.Quantity).Distinct().OrderBy(b => b);
 
-            while (packageIndex <= max)
+            foreach (var packageQuantity in packageQuantities)
             {
-                yield return this.list.Where(b => b.Quantity >= packageIndex);
-                packageIndex++;
+                var packageBooks = this.list.Where(b => b.Quantity >= packageQuantity);
+
+                var sum = packageBooks.Sum(b => b.Price);
+                var episodeCount = packageBooks.Count();
+                var rate = discountRates[episodeCount];
+                var packageRange = packageQuantity - prevQuantity;
+
+                yield return sum * rate * packageRange;
+                prevQuantity = packageQuantity;
             }
         }
     }

@@ -196,5 +196,51 @@ namespace Day2HomeworkTests
             var expected = 0;
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        /// 第一本買了一本二三四五買了一百套，價格應為100*5*0.75 + 100*4*0.8*99 = 32055
+        /// </summary>
+        [TestMethod]
+        public void 第一本買了一本二三四五買了一百套_價格應為32055()
+        {
+            var books = new List<PotterBook>
+            {
+                new PotterBook { Episode = 1, Price = 100, Quantity = 1 },
+                new PotterBook { Episode = 2, Price = 100, Quantity = 100 },
+                new PotterBook { Episode = 3, Price = 100, Quantity = 100 },
+                new PotterBook { Episode = 4, Price = 100, Quantity = 100 },
+                new PotterBook { Episode = 5, Price = 100, Quantity = 100 }
+            };
+
+            var shoppingCart = new PotterShoppingCart();
+            shoppingCart.Add(books);
+            var actual = shoppingCart.GetTotal();
+
+            var expected = 32055;
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        /// 第一本買了一千本二三四五買了一本，價格應為100*5*0.75 + 100*999 = 100275
+        /// </summary>
+        [TestMethod]
+        public void 第一本買了一千本二三四五買了一本_價格應為100275()
+        {
+            var books = new List<PotterBook>
+            {
+                new PotterBook { Episode = 1, Price = 100, Quantity = 1000 },
+                new PotterBook { Episode = 2, Price = 100, Quantity = 1 },
+                new PotterBook { Episode = 3, Price = 100, Quantity = 1 },
+                new PotterBook { Episode = 4, Price = 100, Quantity = 1 },
+                new PotterBook { Episode = 5, Price = 100, Quantity = 1 }
+            };
+
+            var shoppingCart = new PotterShoppingCart();
+            shoppingCart.Add(books);
+            var actual = shoppingCart.GetTotal();
+
+            var expected = 100275;
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
